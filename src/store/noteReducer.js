@@ -19,7 +19,7 @@ export default function noteReducer(state, action) {
       return produce(state, (draft) => {
         const { id, journal } = action;
         const note = draft.notes.find((note) => note.id === id); // payload : note.id
-        note.journalList.unshift({ ...journal });
+        note.journalList.push({ ...journal });
       });
     case 'EDIT_JOURNAL':
       return produce(state, (draft) => {
