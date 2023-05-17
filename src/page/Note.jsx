@@ -23,7 +23,7 @@ export default function Note() {
   useEffect(() => {
     const titleElement = document.getElementsByTagName('title')[0];
     titleElement.innerHTML = `moodLog | ${note.title}`;
-  }, []);
+  }, [note.title]);
 
   return (
     <>

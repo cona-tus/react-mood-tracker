@@ -31,7 +31,7 @@ export default function EditJournal() {
         navigate(`/note/${note.id}`, { replace: true });
       }
     }
-  }, [journalId, journalList]);
+  }, [journalId, journalList, navigate, note.id]);
 
   useEffect(() => {
     const titleElement = document.getElementsByTagName('title')[0];
