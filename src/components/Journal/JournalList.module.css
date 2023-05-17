@@ -1,0 +1,4 @@
+.fallback {
+  color: var(--gray-500);
+  font-size: var(--font-200);
+}

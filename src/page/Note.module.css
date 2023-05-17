@@ -1,0 +1,42 @@
+.container {
+  padding: 0 2rem;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: var(--font-300);
+  font-weight: var(--weight-700);
+  margin-bottom: 1rem;
+}
+
+.icon {
+  font-size: var(--font-100);
+  margin-right: 0.3rem;
+}
+
+.chart {
+  background-color: var(--color-white);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.period {
+  padding: 0 2rem;
+  color: var(--gray-500);
+  font-size: var(--font-200);
+  font-weight: var(--weight-500);
+  text-align: end;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .period {
+    padding: 0 1rem;
+  }
+}

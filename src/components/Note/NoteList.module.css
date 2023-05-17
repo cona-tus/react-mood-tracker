@@ -1,0 +1,35 @@
+.container {
+  padding: 0 2rem;
+  margin-bottom: 3rem;
+}
+
+.notes {
+  /* padding: 1rem; */
+  border-radius: 0.5rem;
+  background-color: var(--color-white);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  overflow: hidden;
+}
+
+.title {
+  font-size: var(--font-300);
+  font-weight: var(--weight-700);
+  margin-bottom: 1rem;
+}
+
+.icon {
+  margin-right: 0.3rem;
+  font-size: var(--font-200);
+}
+
+.fallback {
+  color: var(--gray-500);
+  font-size: var(--font-200);
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+}

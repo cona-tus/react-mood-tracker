@@ -1,0 +1,27 @@
+.btn {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: var(--font-200);
+}
+
+.btn__default {
+  background-color: var(--gray-300);
+  color: var(--color-black);
+}
+
+.btn__positive {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn__negative {
+  background-color: var(--red-400);
+  color: var(--color-white);
+}

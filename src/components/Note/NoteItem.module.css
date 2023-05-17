@@ -1,0 +1,94 @@
+.note {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  background-color: var(--red-400);
+}
+
+.note:not(:last-child) {
+  border-bottom: 1px solid var(--gray-300);
+}
+
+.text {
+  cursor: pointer;
+}
+
+.text:hover .title {
+  color: var(--gray-500);
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  background-color: var(--color-white);
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.content img {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+}
+
+.title {
+  font-size: var(--font-300);
+  font-weight: var(--weight-500);
+  margin-bottom: 0.5rem;
+}
+
+.period {
+  color: var(--gray-500);
+  font-size: var(--font-200);
+}
+
+.action {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translate(0, -50%);
+  z-index: 1;
+}
+
+.item.swipe {
+  transform: translate(-15%, 0);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn__menu,
+.btn__remove {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  font-size: var(--font-400);
+}
+
+.btn__menu {
+  color: var(--gray-500);
+}
+
+.btn__remove {
+  color: var(--color-white);
+}
+
+@media (max-width: 480px) {
+  .action {
+    right: 2.5%;
+  }
+}
+
+@media (max-width: 320px) {
+  .action {
+    right: 1%;
+  }
+}

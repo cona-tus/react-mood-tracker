@@ -1,0 +1,73 @@
+.journal {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-white);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.journal:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.mood_on_1 {
+  border-left: 15px solid var(--red-400);
+}
+
+.mood_on_2 {
+  border-left: 15px solid var(--red-300);
+}
+
+.mood_on_3 {
+  border-left: 15px solid var(--red-200);
+}
+
+.mood_on_4 {
+  border-left: 15px solid var(--yellow-400);
+}
+
+.mood_on_5 {
+  border-left: 15px solid var(--green-200);
+}
+
+.mood_on_6 {
+  border-left: 15px solid var(--green-300);
+}
+
+.mood_on_7 {
+  border-left: 15px solid var(--green-400);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.tag {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--gray-500);
+  color: var(--color-white);
+  font-size: var(--font-100);
+}
+
+.content {
+  font-size: var(--font-200);
+  font-weight: var(--weight-500);
+  line-height: 1.5;
+  margin: 1rem 0;
+}
+
+.date {
+  color: var(--gray-500);
+  font-size: var(--font-100);
+}

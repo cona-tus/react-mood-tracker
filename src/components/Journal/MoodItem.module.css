@@ -1,0 +1,57 @@
+.mood {
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.descript {
+  font-size: var(--font-100);
+  font-weight: var(--weight-500);
+}
+
+.mood_off {
+  opacity: 0.5;
+}
+
+.mood_on_1 {
+  background-color: var(--red-400);
+  color: var(--color-white);
+}
+
+.mood_on_2 {
+  background-color: var(--red-300);
+  color: var(--color-white);
+}
+
+.mood_on_3 {
+  background-color: var(--red-200);
+  color: var(--color-white);
+}
+
+.mood_on_4 {
+  background-color: var(--yellow-400);
+  color: var(--color-white);
+}
+
+.mood_on_5 {
+  background-color: var(--green-200);
+  color: var(--color-white);
+}
+
+.mood_on_6 {
+  background-color: var(--green-300);
+  color: var(--color-white);
+}
+
+.mood_on_7 {
+  background-color: var(--green-400);
+  color: var(--color-white);
+}
