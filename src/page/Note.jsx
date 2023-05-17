@@ -10,7 +10,8 @@ import Statistics from '../components/Note/Statistics';
 
 // styles
 import styles from './Note.module.css';
-import { TfiBackLeft, TfiPlus } from 'react-icons/tfi';
+import { MdArrowBackIosNew } from 'react-icons/md';
+import { HiPlus } from 'react-icons/hi';
 import { SlGraph, SlNotebook } from 'react-icons/sl';
 import { CgMenuMotion } from 'react-icons/cg';
 
@@ -30,11 +31,14 @@ export default function Note() {
       <MainHeader
         headText={note.title}
         leftChild={
-          <HeaderButton text={<TfiBackLeft />} onClick={() => navigate(-1)} />
+          <HeaderButton
+            text={<MdArrowBackIosNew />}
+            onClick={() => navigate(-1)}
+          />
         }
         rightChild={
           <HeaderButton
-            text={<TfiPlus />}
+            text={<HiPlus />}
             type='positive'
             onClick={() => navigate('/new', { state: { note } })}
           />

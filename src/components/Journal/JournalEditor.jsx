@@ -17,7 +17,7 @@ import { NoteDispatchContext, NoteStateContext } from '../../App';
 
 // styles
 import styles from './JournalEditor.module.css';
-import { TfiBackLeft } from 'react-icons/tfi';
+import { MdArrowBackIosNew } from 'react-icons/md';
 import { HiTrash } from 'react-icons/hi';
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
@@ -102,7 +102,10 @@ export default function JournalEditor({ note, isEdit, originData }) {
       <MainHeader
         headText={isEdit ? '일기 수정하기' : '새 일기 작성하기'}
         leftChild={
-          <HeaderButton text={<TfiBackLeft />} onClick={() => navigate(-1)} />
+          <HeaderButton
+            text={<MdArrowBackIosNew />}
+            onClick={() => navigate(-1)}
+          />
         }
         rightChild={
           isEdit && (

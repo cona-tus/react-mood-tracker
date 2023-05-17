@@ -7,7 +7,8 @@ import NoteList from '../components/Note/NoteList';
 import NewNote from '../components/Note/NewNote';
 
 // styles
-import { TfiClose, TfiPlus } from 'react-icons/tfi';
+import { MdClose } from 'react-icons/md';
+import { HiPlus } from 'react-icons/hi';
 
 export default function Home() {
   const [isEditing, setIsEditing] = useState(false);
@@ -18,7 +19,7 @@ export default function Home() {
         headText='moodLog'
         rightChild={
           <HeaderButton
-            text={isEditing ? <TfiClose /> : <TfiPlus />}
+            text={isEditing ? <MdClose /> : <HiPlus />}
             type={isEditing ? 'negative' : 'positive'}
             onClick={() => setIsEditing(!isEditing)}
           />
