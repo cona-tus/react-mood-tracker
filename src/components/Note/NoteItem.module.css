@@ -85,10 +85,23 @@
   .action {
     right: 2.5%;
   }
+
+  .item {
+    padding: 1rem;
+  }
+
+  .content img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .period {
+    font-size: var(--font-100);
+  }
 }
 
 @media (max-width: 320px) {
   .action {
-    right: 1%;
+    right: 0;
   }
 }

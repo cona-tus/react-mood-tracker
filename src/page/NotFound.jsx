@@ -16,7 +16,6 @@ export default function NotFound() {
       </div>
       <h1 className={styles.title}>페이지를 찾을 수 없습니다.</h1>
       <p className={styles.descript}>
-        이런! 길을 잃으셨나요?
         <Link className={styles.link} to='/'>
           여기
         </Link>

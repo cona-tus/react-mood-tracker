@@ -55,3 +55,10 @@
   background-color: var(--green-400);
   color: var(--color-white);
 }
+
+@media (max-width: 480px) {
+  .mood {
+    width: 2rem;
+    height: 2rem;
+  }
+}
