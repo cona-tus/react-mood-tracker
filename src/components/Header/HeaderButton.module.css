@@ -11,16 +11,16 @@
 }
 
 .btn__default {
-  /* background-color: var(--gray-300); */
+  background-color: var(--gray-300);
   color: var(--color-black);
 }
 
 .btn__positive {
-  /* background-color: var(--color-accent); */
-  color: var(--color-black);
+  background-color: var(--color-accent);
+  color: var(--color-white);
 }
 
 .btn__negative {
-  /* background-color: var(--red-400); */
-  color: var(--color-black);
+  background-color: var(--red-400);
+  color: var(--color-white);
 }
