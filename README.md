@@ -13,7 +13,7 @@
 
 ## 1-1. Project Description
 
-'무드로그'는 감정 상태를 기록하는 웹 애플리케이션입니다. 정신 건강에 관심이 있거나, 스트레스를 관리하여 감정 조절 능력을 향상시키고 싶은 사람들을 위해 기획되었습니다. 사용자는 기록하고 싶은 기간을 설정하고 해당 기간 동안 일기를 작성할 수 있습니다. '무드로그'는 작성된 일기를 시각화하고 통계화하여 제공합니다.
+'무드로그'는 감정 상태를 기록하는 웹 애플리케이션입니다. 정신 건강에 관심이 있거나, 스트레스를 관리하여 감정 조절 능력을 향상시키고 싶은 사람들을 위해 제작되었습니다. 사용자는 기록하고 싶은 기간을 설정하고 해당 기간 동안 일기를 작성할 수 있습니다. 무드로그는 작성된 일기를 시각화하고 통계화하여 제공합니다.
 
 <br/>
 
@@ -54,23 +54,15 @@
 
 무드로그의 페이지는 아래와 같이 구성되어 있습니다.
 
+![mood-pages](https://github.com/cona-tus/react-mood-tracker/assets/90844424/8124a9a6-e698-4f15-b295-6a2fb5f04036)
+
 1. Home - 메인 페이지(`/`)
-
-![mood-home](https://github.com/cona-tus/react-mood-tracker/assets/90844424/5f917cce-6d8b-4a6e-9b42-21d6fb5c5991)
-
 2. Note - 노트 페이지(`note/:noteId`)
-
-![mood-notepage](https://github.com/cona-tus/react-mood-tracker/assets/90844424/185f075f-8e03-4cad-a040-5494788e1448)
-
 3. NewJournal - 일기 생성 페이지(`new`)
-
-![mood-newpage](https://github.com/cona-tus/react-mood-tracker/assets/90844424/f8af1583-67cc-4976-ab7b-033203a88bdf)
-
 4. EditJournal - 일기 수정 페이지(`edit/:journalId`)
-
-![mood-editpage](https://github.com/cona-tus/react-mood-tracker/assets/90844424/537526c2-04dc-4040-a9ea-7cd92854c67e)
-
 5. NotFound - 404 페이지
+
+<br/>
 
 ```js
 const router = createBrowserRouter([
@@ -106,10 +98,13 @@ const router = createBrowserRouter([
 
 무드로그는 아래의 기능을 제공합니다.
 
+- 노트 데이터 로컬스토리지에 저장
 - 노트 생성/삭제 기능
 - 일기 생성/수정/삭제 기능
 
-무드로그의 전역적인 상태 데이터는 noteState입니다. 노트 내에 일기 리스트가 포함된 형태로, 노트 객체는 중첩된 배열과 객체로 구성되어 있습니다.
+<br/>
+
+무드로그의 전역적인 상태 데이터는 **noteState**입니다. 노트 내에 일기 리스트가 포함된 형태로, 노트 객체는 중첩된 배열과 객체로 구성되어 있습니다.
 
 ```js
 noteState = {
@@ -132,6 +127,8 @@ noteState = {
   ],
 };
 ```
+
+<br/>
 
 noteState의 상태 관리를 하기 위해 `useReducer` 훅을 사용하여 상태변화 로직을 컴포넌트에서 분리했습니다. useReducer는 useState보다 더 복잡하거나 다양한 컴포넌트 상황에 따라 값을 업데이트할 때 사용합니다.
 
@@ -187,9 +184,9 @@ export default function noteReducer(state, action) {
 }
 ```
 
-`Context API`로 상태 관리 로직의 컨텍스트와, 상태 변화를 주도하는 dispatch 함수들의 컨텍스트를 만들어 데이터를 컴포넌트 트리 전역에 공급합니다. 이렇게 하면 컨텍스트 영역 안에 있는 컴포넌트들은 noteState와 noteDispatch에 접근할 수 있습니다.
+<br/>
 
-`useEffect` 훅을 사용해 noteState가 변경될 때마다 로컬스토리지에 데이터를 저장합니다.
+`Context API`로 상태 관리 로직의 컨텍스트와, 상태 변화를 주도하는 dispatch 함수들의 컨텍스트를 만들어 데이터를 컴포넌트 트리 전역에 공급합니다. 이렇게 하면 컨텍스트 영역 안에 있는 컴포넌트들은 noteState와 noteDispatch에 접근할 수 있습니다.
 
 ```jsx
 // context
@@ -285,7 +282,40 @@ export default App;
 
 <br/>
 
-## 3-2.1. Create a Note
+## 4-1. Save Notes in LocalStorage
+
+![mood-local](https://github.com/cona-tus/react-mood-tracker/assets/90844424/62f29957-d04d-4de0-84bb-ae56f4766756)
+
+`useEffect` 훅을 사용해 noteState가 변경될 때마다 로컬스토리지에 데이터를 저장합니다.
+
+```js
+useEffect(() => {
+  localStorage.setItem('noteState', JSON.stringify(noteState));
+}, [noteState]);
+```
+
+useReducer의 초기값으로 `getItem()` 함수를 호출하여 noteState 데이터를 가져옵니다.
+
+```js
+const [noteState, noteDispatch] = useReducer(noteReducer, getItem());
+
+// initialState
+const noteInitialState = {
+  notes: [],
+};
+
+// get Data from localStorage
+function getItem() {
+  const noteState = localStorage.getItem('noteState');
+  return noteState ? JSON.parse(noteState) : noteInitialState;
+}
+```
+
+<br/>
+
+## 4-2. Create a Note
+
+![mood-note-add](https://github.com/cona-tus/react-mood-tracker/assets/90844424/e60c0c39-2e22-4c06-9512-c584bd2a9e9f)
 
 > 메인 페이지 우측 상단의 `+` 버튼을 눌러 form을 열고 `x` 버튼을 눌러 닫을 수 있습니다. 노트의 제목, 기간 정보를 입력하여 새로운 노트를 생성합니다.
 
@@ -406,18 +436,30 @@ export default function NewNote() {
 }
 ```
 
-## 3-2.2. Remove a Note
+<br/>
+
+## 4-2. Remove a Note
+
+![mood-note-remove](https://github.com/cona-tus/react-mood-tracker/assets/90844424/72dd6bf8-43bf-4a09-8c42-66a0a8e3738d)
 
 > `:` 아이콘을 클릭하면 해당 항목이 스와이프 되어 휴지통 버튼이 보이며, 이 삭제 버튼을 클릭하여 노트를 삭제할 수 있습니다.
 
 ```jsx
 export default function NoteItem({ note }) {
+  // useState 훅으로 스와이프 유무를 관리합니다.
   const [isSwipe, setIsSwipe] = useState(false);
+
+  // 리액트 라우터의 useNavigate 훅을 사용하여 네비게이션 기능을 가져옵니다.
+  // 아이템을 클릭하면 `/note/${id}`로 페이지를 전환합니다.
   const navigate = useNavigate();
 
+  // 비구조화 할당하여 note 객체의 속성들을 개별적인 변수로 추출합니다.
   const { id, title, startDate, endDate } = note;
+
+  // useContext 훅으로 onRemoveNote 함수를 불러옵니다.
   const { onRemoveNote } = useContext(NoteDispatchContext);
 
+  // isSwipe 상태로 버튼에 클래스를 동적으로 적용합니다.
   const btnClasses = isSwipe ? styles.swipe : '';
 
   return (
@@ -455,19 +497,19 @@ export default function NoteItem({ note }) {
 }
 ```
 
-## 3-2.3. Create a Journal
+<br/>
 
-## 3-2.4. Edit a Journal
+## 4-3. Create a Journal
 
-## 3-2.5. Remove a Journal
+## 4-4. Edit a Journal
 
-## 3-2.6. Quantify Journal Data
+## 4-5. Remove a Journal
+
+## 4-6. Quantify Journal Data
 
 <br/>
 
 ## 3-2. 노트 페이지
-
-![mood-detail](https://github.com/cona-tus/react-mood-tracker/assets/90844424/32de2902-a750-4028-b673-e7a52972f344)
 
 - 기분 추이 그래프
   - chart.js 라이브러리를 사용해 데이터를 그래프로 시각화
@@ -482,19 +524,15 @@ export default function NoteItem({ note }) {
 ## 3-3. 일기 작성 및 수정 페이지
 
 - 작성 및 수정 페이지 전환
+
   - context를 이용해 일기 작성 가능
   - 조건부 렌더링으로 작성 및 수정 페이지 전환
   - 작성 취소 시 입력폼 초기화
-
-![mood-add](https://github.com/cona-tus/react-mood-tracker/assets/90844424/db2b897e-fc67-4dd5-b2a8-f0459bd886a3)
 
 - 일기 작성
   - 설정한 기간 내에서 날짜 선택 가능
   - 일기 작성 시 날짜 및 내용 입력창 유효성 검사
   - state를 이용해 mood와 tag를 수치로 저장
-
-![mood-edit](https://github.com/cona-tus/react-mood-tracker/assets/90844424/0ef00460-d063-4766-a054-f5b7b695b788)
-
 - 일기 수정 및 삭제
   - context, reducer로 기존 데이터로 일기 수정 가능
   - context, reducer로 개별 일기 삭제 가능
