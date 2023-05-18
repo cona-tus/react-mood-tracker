@@ -10,7 +10,7 @@ import Statistics from '../components/Note/Statistics';
 
 // styles
 import styles from './Note.module.css';
-import { TfiBackLeft, TfiPlus } from 'react-icons/tfi';
+// import { TfiBackLeft, TfiPlus } from 'react-icons/tfi';
 import { SlGraph, SlNotebook } from 'react-icons/sl';
 import { CgMenuMotion } from 'react-icons/cg';
 
@@ -29,12 +29,10 @@ export default function Note() {
     <>
       <MainHeader
         headText={note.title}
-        leftChild={
-          <HeaderButton text={<TfiBackLeft />} onClick={() => navigate(-1)} />
-        }
+        leftChild={<HeaderButton text='〈' onClick={() => navigate(-1)} />}
         rightChild={
           <HeaderButton
-            text={<TfiPlus />}
+            text='+'
             type='positive'
             onClick={() => navigate('/new', { state: { note } })}
           />
