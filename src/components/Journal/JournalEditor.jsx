@@ -17,8 +17,8 @@ import { NoteDispatchContext, NoteStateContext } from '../../App';
 
 // styles
 import styles from './JournalEditor.module.css';
-// import { TfiBackLeft } from 'react-icons/tfi';
-// import { HiTrash } from 'react-icons/hi';
+import { TfiBackLeft } from 'react-icons/tfi';
+import { HiTrash } from 'react-icons/hi';
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
 const sadImg = process.env.PUBLIC_URL + `/assets/sad.svg`;
@@ -101,11 +101,13 @@ export default function JournalEditor({ note, isEdit, originData }) {
     <section className={styles.container}>
       <MainHeader
         headText={isEdit ? '일기 수정하기' : '새 일기 작성하기'}
-        leftChild={<HeaderButton text='〈' onClick={() => navigate(-1)} />}
+        leftChild={
+          <HeaderButton text={<TfiBackLeft />} onClick={() => navigate(-1)} />
+        }
         rightChild={
           isEdit && (
             <HeaderButton
-              text='×'
+              text={<HiTrash />}
               type='negative'
               onClick={handleRemoveJournal}
             />
