@@ -1,12 +1,16 @@
 .btn {
-  /* width: 2rem;
+  width: 2rem;
   height: 2rem;
   display: flex;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
   outline: 0;
   border: 0;
   border-radius: 50%;
+}
+
+.icon {
+  display: flex;
   font-size: var(--font-200);
 }
 

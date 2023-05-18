@@ -9,7 +9,7 @@ export default function HeaderButton({ text, type, onClick }) {
 
   return (
     <button className={btnClasses} onClick={onClick}>
-      {text}
+      <span className={styles.icon}>{text}</span>
     </button>
   );
 }
