@@ -53,9 +53,12 @@
 }
 
 .action {
+  width: 15%;
+  display: flex;
+  justify-content: center;
   position: absolute;
   top: 50%;
-  right: 5%;
+  right: 0;
   transform: translate(0, -50%);
   z-index: 1;
 }
@@ -82,10 +85,6 @@
 }
 
 @media (max-width: 480px) {
-  .action {
-    right: 2.5%;
-  }
-
   .item {
     padding: 1rem;
   }
@@ -97,11 +96,5 @@
 
   .period {
     font-size: var(--font-100);
-  }
-}
-
-@media (max-width: 320px) {
-  .action {
-    right: 0;
   }
 }
