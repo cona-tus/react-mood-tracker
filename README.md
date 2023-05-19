@@ -1,6 +1,6 @@
 # ☀️ 무드 트래커 앱, '무드로그moodLog' 프로젝트
 
-![mood-thumb](https://github.com/cona-tus/react-mood-tracker/assets/90844424/1046fa15-f7b2-4f14-b322-5cc93fc2db42)
+![mood-thumb](https://github.com/cona-tus/react-mood-tracker/assets/90844424/47029b76-56f5-49fc-bb3c-344eb8a16bda)
 
 <br/>
 
@@ -13,11 +13,11 @@
 
 ## 1-1. Project Description
 
-'무드로그'는 감정 상태를 기록하는 웹 애플리케이션입니다. 정신 건강에 관심이 있거나, 스트레스를 관리하여 감정 조절 능력을 향상시키고 싶은 사람들을 위해 제작되었습니다. 사용자는 기록하고 싶은 기간을 설정하고 해당 기간 동안 일기를 작성할 수 있습니다. 무드로그는 작성된 일기를 시각화하고 통계화하여 제공합니다.
+'무드로그'는 감정 상태를 기록하는 웹 애플리케이션입니다. 정신 건강에 관심이 있거나, 스트레스를 관리하여 감정 조절 능력을 향상시키고 싶은 사람들을 위해 제작되었습니다. 사용자는 기록하고 싶은 기간을 설정하고 해당 기간 동안 일기를 작성할 수 있습니다. 무드로그는 작성된 일기를 바탕으로 감정 수치를 시각화하고 통계화하여 제공합니다.
 
 <br/>
 
-![mood-desc](https://github.com/cona-tus/react-mood-tracker/assets/90844424/20659edf-1af5-4ea1-9ca1-1b1a99859c6f)
+![mood-desc](https://github.com/cona-tus/react-mood-tracker/assets/90844424/e8af95f0-1294-424a-a5e3-5a9b866e3fe5)
 
 ☀️ 무드로그를 통해 나의 감정 흐름을 추적하고 더 나은 일상을 만나보세요!
 
@@ -52,9 +52,9 @@
 
 # 3. Pages
 
-무드로그의 페이지는 아래와 같이 구성되어 있습니다.
-
 ![mood-pages](https://github.com/cona-tus/react-mood-tracker/assets/90844424/8124a9a6-e698-4f15-b295-6a2fb5f04036)
+
+## 3-1. 무드로그 페이지 구성
 
 1. Home - 메인 페이지(`/`)
 2. Note - 노트 페이지(`note/:noteId`)
@@ -94,15 +94,19 @@ const router = createBrowserRouter([
 
 <br/>
 
-## 4. Main Features
+# 4. Main Features
 
-무드로그는 아래의 기능을 제공합니다.
+## 4-1. 무드로그 구현 기능
 
+- 노트 생성, 삭제 기능
+- 일기 생성, 수정, 삭제 기능
 - 노트 데이터 로컬스토리지에 저장
-- 노트 생성/삭제 기능
-- 일기 생성/수정/삭제 기능
 
 <br/>
+
+## 4-2. 코드 설명
+
+### 4-2.1. 상태 관리
 
 무드로그의 전역적인 상태 데이터는 **noteState**입니다. 노트 내에 일기 리스트가 포함된 형태로, 노트 객체는 중첩된 배열과 객체로 구성되어 있습니다.
 
@@ -282,7 +286,7 @@ export default App;
 
 <br/>
 
-## 4-1. Save Notes in LocalStorage
+### 4-2.2. 로컬스토리지에 노트 데이터 저장
 
 ![mood-local](https://github.com/cona-tus/react-mood-tracker/assets/90844424/62f29957-d04d-4de0-84bb-ae56f4766756)
 
@@ -313,11 +317,16 @@ function getItem() {
 
 <br/>
 
-## 4-2. Create a Note
+### 4-2.3. 새로운 노트 생성
 
 ![mood-note-add](https://github.com/cona-tus/react-mood-tracker/assets/90844424/e60c0c39-2e22-4c06-9512-c584bd2a9e9f)
 
 > 메인 페이지 우측 상단의 `+` 버튼을 눌러 form을 열고 `x` 버튼을 눌러 닫을 수 있습니다. 노트의 제목, 기간 정보를 입력하여 새로운 노트를 생성합니다.
+
+- isEditing state를 이용하여 입력 폼 조건부 렌더링
+- dispatch context 호출하여 노트 생성
+- 타이틀과 날짜 입력 시 유효성 검사
+- 취소 및 생성 시 노트 초기화
 
 ```jsx
 export default function NewNote() {
@@ -438,11 +447,15 @@ export default function NewNote() {
 
 <br/>
 
-## 4-2. Remove a Note
+### 4-2.4. 노트 삭제
 
 ![mood-note-remove](https://github.com/cona-tus/react-mood-tracker/assets/90844424/72dd6bf8-43bf-4a09-8c42-66a0a8e3738d)
 
 > `:` 아이콘을 클릭하면 해당 항목이 스와이프 되어 휴지통 버튼이 보이며, 이 삭제 버튼을 클릭하여 노트를 삭제할 수 있습니다.
+
+- isSwipe state로 삭제 버튼 활성화
+- useNavigate으로 상세 페이지로 이동
+- dispatch context 호출하여 노트 삭제
 
 ```jsx
 export default function NoteItem({ note }) {
@@ -499,17 +512,13 @@ export default function NoteItem({ note }) {
 
 <br/>
 
-## 4-3. Create & Edit & Remove a Journal
-
-일기를 생성하는 form과 일기를 수정하는 form은 동일한 구조와 형식을 갖습니다. 따라서 동일한 `JournalEditor` 컴포넌트를 렌더링하고, props를 다르게 전달합니다.
-
-<br/>
-
-다음은 일기 생성 페이지입니다.
+### 4-2.5. 새로운 일기 생성
 
 ![mood-journal-add](https://github.com/cona-tus/react-mood-tracker/assets/90844424/cc16cc8f-ec4e-450f-9e46-c2fc686bc761)
 
 > 노트 페이지에서 우측 상단의 `+` 버튼을 클릭하여 새로운 일기를 생성할 수 있습니다. 일기에는 날짜, 기분 수치, 태그, 내용 정보가 포함되며, 노트를 작성할 때 입력한 기간 내에서만 작성 가능합니다.
+
+일기를 생성하는 form과 일기를 수정하는 form은 동일한 구조와 형식을 갖습니다. 따라서 동일한 `JournalEditor` 컴포넌트를 렌더링하고, props를 다르게 전달합니다.
 
 ```jsx
 export default function NewJournal() {
@@ -535,15 +544,11 @@ export default function NewJournal() {
 
 <br/>
 
-다음은 일기 수정 페이지입니다.
+### 4-2.6. 일기 수정 및 삭제
 
-![mood-journal-edit](https://github.com/cona-tus/react-mood-tracker/assets/90844424/4d62596a-ccc1-4e32-a337-5f50a2f61fab)
+![mood-journal-edit](https://github.com/cona-tus/react-mood-tracker/assets/90844424/e2179048-dbdc-4002-84d8-9576a022e0cb)
 
-> 일기 아이템을 클릭해 수정 페이지로 이동 후 일기 데이터를 수정할 수 있습니다. 일기가 작성된 날짜에 한에서만 수정됩니다.
-
-![mood-journal-remove](https://github.com/cona-tus/react-mood-tracker/assets/90844424/519b8cf7-bc5c-4bf5-8569-77416e33c868)
-
-> 우측 상단의 삭제 버튼을 클릭하여 일기를 삭제할 수 있습니다.
+> 일기 아이템을 클릭해 수정 페이지로 이동 후 일기 데이터를 수정할 수 있습니다. 일기가 작성된 날짜에 한에서만 수정됩니다. 또한 우측 상단의 삭제 버튼을 클릭하여 일기를 삭제할 수 있습니다.
 
 ```jsx
 export default function EditJournal() {
@@ -795,11 +800,14 @@ export default function JournalEditor({ note, isEdit, originData }) {
 
 <br/>
 
-## 4-4. Quantify Journal Data
+### 4-2.7. 감정 수치 통계화
 
-> 노트 페이지에는 작성된 일기를 바탕으로 기분 수치를 계산하여 그래프로 표시되고, 통계치를 나타냅니다. 또한 작성된 일기를 리스트로 볼 수 있습니다.
+![mood-journals](https://github.com/cona-tus/react-mood-tracker/assets/90844424/25623f31-546f-4e3d-9f00-9a4b197ec475)
 
-다음은 Chart 컴포넌트입니다. `chart.js` 라이브러리를 사용해 noteState 데이터를 그래프로 시각화합니다.
+> 노트 페이지는 작성된 일기를 바탕으로 기분 수치를 계산한 그래프와 통계치, 그리고 일기 리스트로 구성되어 있습니다.
+
+그래프
+그래프를 구현하기 위해 `Chart.js` 라이브러리를 사용했습니다. labels와 datasets에 noteState 데이터를 전달하면 그래프가 나타납니다.
 
 ```jsx
 import React, { useContext } from 'react';
@@ -853,7 +861,7 @@ export default function Chart({ note }) {
 
 <br/>
 
-다음은 Statistics 컴포넌트입니다.
+기분 통계치
 
 ```jsx
 export default function Statistics({ note }) {
@@ -862,45 +870,53 @@ export default function Statistics({ note }) {
   const noteData = noteList.notes.find((item) => item.id === note.id);
   const { journalList } = noteData;
 
-  // 기록일, 기분 수치의 값을 계산합니다.
+  // 기록일, 기분 수치의 평균값을 계산합니다.
   const numOfDays = journalList.length;
   const sumOfMood = journalList.reduce((acc, item) => (acc += +item.mood), 0);
   const averageOfMood = numOfDays > 0 ? (sumOfMood / numOfDays).toFixed(1) : 0;
 
+  // 최저/최고 기분 수치 일수를 계산합니다.
   const minOfDays = journalList.filter((journal) => +journal.mood === 1).length;
   const maxOfDays = journalList.filter((journal) => +journal.mood === 7).length;
 
   return (
-    <ul className={styles.list}>
-      <li className={styles.item}>
-        <div className={styles.icon}>
-          <MdEventNote />
-        </div>
-        <p className={styles.num}>{numOfDays ? numOfDays : 0}일</p>
-        <h3 className={styles.text}>기록수</h3>
-      </li>
-      <li className={styles.item}>
-        <div className={styles.icon}>
-          <BsGraphUp />
-        </div>
-        <p className={styles.num}>{averageOfMood ? averageOfMood : 0}점</p>
-        <h3 className={styles.text}>평균치</h3>
-      </li>
-      <li className={styles.item}>
-        <div className={styles.icon}>
-          <HiOutlineFaceFrown />
-        </div>
-        <p className={styles.num}>{minOfDays ? minOfDays : 0}일</p>
-        <h3 className={styles.text}>최저치 일수</h3>
-      </li>
-      <li className={styles.item}>
-        <div className={styles.icon}>
-          <HiOutlineFaceSmile />
-        </div>
-        <p className={styles.num}>{maxOfDays ? maxOfDays : 0}일</p>
-        <h3 className={styles.text}>최고치 일수</h3>
-      </li>
-    </ul>
+  // 구현
+  );
+}
+```
+
+<br/>
+
+일기 리스트
+
+```jsx
+export default function JournalList({ note }) {
+  // useContext 훅을 이용해 전역 데이터인 noteState의 journalList를 가져옵니다.
+  const noteList = useContext(NoteStateContext);
+  const { notes } = noteList;
+  const noteData = notes.find((item) => item.id === note.id);
+  const { journalList } = noteData;
+
+  // journalList를 mapping 하여 JournalItem에 props로 데이터를 전달합니다.
+  return (
+    <section>
+      {journalList.length === 0 && (
+        <p className={styles.fallback}>
+          기록이 없습니다. 새로운 일기를 작성해보세요.
+        </p>
+      )}
+      {journalList && (
+        <ul>
+          {journalList.map((journal) => (
+            <JournalItem
+              key={journal.journalId}
+              journal={journal}
+              note={note}
+            />
+          ))}
+        </ul>
+      )}
+    </section>
   );
 }
 ```
