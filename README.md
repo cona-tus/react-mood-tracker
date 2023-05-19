@@ -518,6 +518,12 @@ export default function NoteItem({ note }) {
 
 > 노트 페이지에서 우측 상단의 `+` 버튼을 클릭하여 새로운 일기를 생성할 수 있습니다. 일기에는 날짜, 기분 수치, 태그, 내용 정보가 포함되며, 노트를 작성할 때 입력한 기간 내에서만 작성 가능합니다.
 
+- 조건부 렌더링으로 작성 및 수정 페이지 전환
+- 설정 기간 내에서 날짜 선택 가능
+- 일기 작성 시 입력값 유효성 검사
+- state를 이용해 mood와 tag를 수치로 저장
+- 작성 및 취소 시 입력폼 초기화
+
 일기를 생성하는 form과 일기를 수정하는 form은 동일한 구조와 형식을 갖습니다. 따라서 동일한 `JournalEditor` 컴포넌트를 렌더링하고, props를 다르게 전달합니다.
 
 ```jsx
@@ -549,6 +555,10 @@ export default function NewJournal() {
 ![mood-journal-edit](https://github.com/cona-tus/react-mood-tracker/assets/90844424/e2179048-dbdc-4002-84d8-9576a022e0cb)
 
 > 일기 아이템을 클릭해 수정 페이지로 이동 후 일기 데이터를 수정할 수 있습니다. 일기가 작성된 날짜에 한에서만 수정됩니다. 또한 우측 상단의 삭제 버튼을 클릭하여 일기를 삭제할 수 있습니다.
+
+- context를 통해 원본 일기 저장
+- isEdit state로 조건부 렌더링
+- id값을 이용해 데이터 삭제
 
 ```jsx
 export default function EditJournal() {
@@ -805,6 +815,11 @@ export default function JournalEditor({ note, isEdit, originData }) {
 ![mood-journals](https://github.com/cona-tus/react-mood-tracker/assets/90844424/25623f31-546f-4e3d-9f00-9a4b197ec475)
 
 > 노트 페이지는 작성된 일기를 바탕으로 기분 수치를 계산한 그래프와 통계치, 그리고 일기 리스트로 구성되어 있습니다.
+
+- chart.js 라이브러리로 데이터를 그래프로 시각화
+- 기분 데이터를 가공하여 통계화
+- context를 이용해 일기 리스트 표시
+- 개별 일기 클릭 시 수정 페이지로 이동
 
 그래프
 그래프를 구현하기 위해 `Chart.js` 라이브러리를 사용했습니다. labels와 datasets에 noteState 데이터를 전달하면 그래프가 나타납니다.
