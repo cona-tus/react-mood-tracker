@@ -1,30 +1,24 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-// components
 import MainHeader from '../Header/MainHeader';
 import HeaderButton from '../Header/HeaderButton';
 import MoodItem from './MoodItem';
 import TagItem from './TagItem';
-
-// util
 import { getStringDate } from '../../util/date';
 import { moodList } from '../../util/mood';
 import { tagList } from '../../util/tag';
-
-// context
 import { NoteDispatchContext, NoteStateContext } from '../../App';
-
-// styles
 import styles from './JournalEditor.module.css';
 import { TfiBackLeft } from 'react-icons/tfi';
 import { HiTrash } from 'react-icons/hi';
+
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
 const sadImg = process.env.PUBLIC_URL + `/assets/sad.svg`;
 const happyImg = process.env.PUBLIC_URL + `/assets/happy.svg`;
 
 export default function JournalEditor({ note, isEdit, originData }) {
+  const navigate = useNavigate();
   const [journal, setJournal] = useState({
     journalId: '',
     mood: 4,
@@ -36,12 +30,9 @@ export default function JournalEditor({ note, isEdit, originData }) {
 
   const { onCreateJournal, onEditJournal, onRemoveJournal } =
     useContext(NoteDispatchContext);
-  const noteList = useContext(NoteStateContext);
-  const noteData = noteList.notes.find((item) => item.id === note.id);
+  const notes = useContext(NoteStateContext);
+  const noteData = notes.find((item) => item.id === note.id);
   const { journalList } = noteData;
-
-  const navigate = useNavigate();
-
   const { id, startDate, endDate } = note;
 
   const handleClickMood = (mood_id) => {

@@ -1,15 +1,13 @@
 import React, { useContext } from 'react';
 import { NoteStateContext } from '../../App';
-
-// styles
-import styles from './Statistics.module.css';
 import { MdEventNote } from 'react-icons/md';
 import { BsGraphUp } from 'react-icons/bs';
 import { HiOutlineFaceFrown, HiOutlineFaceSmile } from 'react-icons/hi2';
+import styles from './Statistics.module.css';
 
 export default function Statistics({ note }) {
-  const noteList = useContext(NoteStateContext);
-  const noteData = noteList.notes.find((item) => item.id === note.id);
+  const notes = useContext(NoteStateContext);
+  const noteData = notes.find((item) => item.id === note.id);
   const { journalList } = noteData;
 
   const numOfDays = journalList.length;

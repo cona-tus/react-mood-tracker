@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-// styles
 import styles from './NotFound.module.css';
+
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
 

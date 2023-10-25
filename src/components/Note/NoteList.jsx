@@ -1,16 +1,11 @@
 import React, { useContext } from 'react';
 import { NoteStateContext } from '../../App';
-
-// components
 import NoteItem from './NoteItem';
-
-// styles
-import styles from './NoteList.module.css';
 import { FaCalendarCheck } from 'react-icons/fa';
+import styles from './NoteList.module.css';
 
 export default function NoteList() {
-  const noteList = useContext(NoteStateContext);
-  const { notes } = noteList;
+  const notes = useContext(NoteStateContext);
 
   return (
     <section className={styles.container}>

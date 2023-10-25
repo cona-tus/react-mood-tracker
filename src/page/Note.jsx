@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
-// components
 import MainHeader from '../components/Header/MainHeader';
 import HeaderButton from '../components/Header/HeaderButton';
 import JournalList from '../components/Journal/JournalList';
 import Chart from '../components/Note/Chart';
 import Statistics from '../components/Note/Statistics';
-
-// styles
-import styles from './Note.module.css';
 import { TfiBackLeft, TfiPlus } from 'react-icons/tfi';
 import { SlGraph, SlNotebook } from 'react-icons/sl';
 import { CgMenuMotion } from 'react-icons/cg';
+import styles from './Note.module.css';
 
 export default function Note() {
   const navigate = useNavigate();

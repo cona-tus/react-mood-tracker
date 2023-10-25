@@ -1,6 +1,4 @@
 import React from 'react';
-
-// styles
 import styles from './MainHeader.module.css';
 
 export default function MainHeader({ headText, leftChild, rightChild }) {

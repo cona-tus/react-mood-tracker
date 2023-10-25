@@ -1,6 +1,4 @@
 import React from 'react';
-
-// styles
 import styles from './HeaderButton.module.css';
 
 export default function HeaderButton({ text, type, onClick }) {

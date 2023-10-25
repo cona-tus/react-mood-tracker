@@ -1,12 +1,6 @@
 import React, { useContext, useRef, useState } from 'react';
-
-// context
 import { NoteDispatchContext } from '../../App';
-
-// util
 import { getStringDate } from '../../util/date';
-
-// styles
 import styles from './NewNote.module.css';
 
 const curDate = new Date();

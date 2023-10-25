@@ -1,17 +1,16 @@
 import React, { useContext } from 'react';
 import { NoteStateContext } from '../../App';
-
-// components
 import JournalItem from './JournalItem';
-
-// styles
 import styles from './JournalList.module.css';
 
 export default function JournalList({ note }) {
-  const noteList = useContext(NoteStateContext);
-  const { notes } = noteList;
+  const notes = useContext(NoteStateContext);
   const noteData = notes.find((item) => item.id === note.id);
   const { journalList } = noteData;
+
+  const sortedList = [...journalList].sort((a, b) =>
+    a.createdAt < b.createdAt ? 1 : -1
+  );
 
   return (
     <section>
@@ -22,7 +21,7 @@ export default function JournalList({ note }) {
       )}
       {journalList && (
         <ul>
-          {journalList.map((journal) => (
+          {sortedList.map((journal) => (
             <JournalItem
               key={journal.journalId}
               journal={journal}

@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
-// components
 import JournalEditor from '../components/Journal/JournalEditor';
 
 export default function NewJournal() {

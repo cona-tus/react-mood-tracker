@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-
-// components
 import MainHeader from '../components/Header/MainHeader';
 import HeaderButton from '../components/Header/HeaderButton';
 import NoteList from '../components/Note/NoteList';
 import NewNote from '../components/Note/NewNote';
-
-// styles
 import { TfiClose, TfiPlus } from 'react-icons/tfi';
 
 export default function Home() {

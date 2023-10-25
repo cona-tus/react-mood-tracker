@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { NoteDispatchContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
-
-// styles
-import styles from './NoteItem.module.css';
 import { HiOutlineDotsVertical, HiTrash } from 'react-icons/hi';
+import styles from './NoteItem.module.css';
+
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
 

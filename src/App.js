@@ -3,27 +3,26 @@ import { createContext, useReducer } from 'react';
 import { Outlet } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
-// reducer
+// 리듀서
 import noteReducer from './store/noteReducer';
 
-// context
+// 컨텍스트 생성
 export const NoteStateContext = createContext();
 export const NoteDispatchContext = createContext();
 
-// initialState
-const noteInitialState = {
-  notes: [],
-};
+// 초기 노트 상태
+const initNotes = [];
 
-// get Data from LocalStorage
-function getItem() {
-  const noteState = localStorage.getItem('noteState');
-  return noteState ? JSON.parse(noteState) : noteInitialState;
+// 로컬스토리지에서 데이터 가져오기
+function getNotes() {
+  const notes = localStorage.getItem('notes');
+  return notes ? JSON.parse(notes) : initNotes;
 }
 
 function App() {
-  const [noteState, noteDispatch] = useReducer(noteReducer, getItem());
+  const [notes, noteDispatch] = useReducer(noteReducer, getNotes());
 
+  // 새로운 노트 생성
   const onAddNote = (note) => {
     noteDispatch({
       type: 'ADD_NOTE',
@@ -34,6 +33,7 @@ function App() {
     });
   };
 
+  // 노트 삭제
   const onRemoveNote = (noteId) => {
     noteDispatch({
       type: 'REMOVE_NOTE',
@@ -41,6 +41,7 @@ function App() {
     });
   };
 
+  // 일기 생성
   const onCreateJournal = (noteId, journal) => {
     noteDispatch({
       type: 'CREATE_JOURNAL',
@@ -52,6 +53,7 @@ function App() {
     });
   };
 
+  // 일기 수정
   const onEditJournal = (noteId, targetId, journal) => {
     noteDispatch({
       type: 'EDIT_JOURNAL',
@@ -63,6 +65,7 @@ function App() {
     });
   };
 
+  // 일기 삭제
   const onRemoveJournal = (noteId, targetId) => {
     noteDispatch({
       type: 'REMOVE_JOURNAL',
@@ -71,13 +74,14 @@ function App() {
     });
   };
 
+  // 노트 로컬스토리지에 저장
   useEffect(() => {
-    localStorage.setItem('noteState', JSON.stringify(noteState));
-  }, [noteState]);
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes]);
 
   return (
     <>
-      <NoteStateContext.Provider value={noteState}>
+      <NoteStateContext.Provider value={notes}>
         <NoteDispatchContext.Provider
           value={{
             onAddNote,
