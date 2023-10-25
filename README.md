@@ -1,4 +1,4 @@
-# ☀️ 무드 트래커 앱, 'moodLog' 프로젝트
+# 😃 무드 트래커 앱, 'moodLog' 프로젝트
 
 ![mood-thumb](https://github.com/cona-tus/react-mood-tracker/assets/90844424/47029b76-56f5-49fc-bb3c-344eb8a16bda)
 
@@ -15,7 +15,7 @@
 
 moodLog는 감정 상태를 기록하는 웹 애플리케이션으로, 정신 건강을 관리하고자 하는 사용자를 대상으로 기획되었습니다. 사용자는 7단계로 기분을 체크하고, 이 기분에 영향을 미치는 요인을 선택하여 일기를 작성할 수 있습니다. moodLog는 사용자가 작성한 일기를 바탕으로 감정 수치를 그래프로 시각화하여 제공합니다. 이를 통해 사용자는 감정 변화를 한눈에 살펴볼 수 있으며, 필요한 경우 전문가의 도움을 받을 때 유용하게 활용할 수 있습니다.
 
-moodLog를 통해 나의 감정 흐름을 추적하고 더 나은 일상을 만나보세요!
+😄 moodLog를 통해 나의 감정 흐름을 추적하고 더 나은 일상을 만나보세요!
 
 <br/>
 
@@ -79,11 +79,11 @@ const router = createBrowserRouter([
 
 ## 4. Main Features
 
-1. [노트 생성]()
-2. [노트 데이터 로컬스토리지에 저장]()
-3. [노트 삭제]()
-4. [새로운 일기 작성]()
-5. [일기 수정 및 삭제]()
+1. [노트 생성](#4-1-create-a-new-note)
+2. [노트 데이터 로컬스토리지에 저장](#4-2-save-data-in-local-storage)
+3. [노트 삭제](#4-3-delete-a-note)
+4. [새로운 일기 작성](#4-4-create-a-new-journal)
+5. [일기 수정 및 삭제](#4-5-edit--delete-the-journal)
 
 <br/>
 
@@ -190,7 +190,7 @@ export default App;
 
 <br/>
 
-notes의 상태를 관리 하기 위해 `useReducer` 훅을 사용하여 상태 변화 로직을 컴포넌트에서 분리합니다. 또한 객체의 불변성을 유지하며 값을 업데이트하기 위해 `immer` 라이브러리를 사용합니다. immer는 가변적인 값을 다루는 것과 유사한 방식을 통해 복잡한 구조의 객체를 보다 간결하게 수정할 수 있도록 도와줍니다.
+notes의 상태를 관리하기 위해 `useReducer` 훅을 사용하여 상태 변화 로직을 컴포넌트에서 분리합니다. 또한 객체의 불변성을 유지하며 값을 업데이트하기 위해 `immer` 라이브러리를 사용합니다. immer는 가변적인 값을 다루는 것과 유사한 방식을 통해 복잡한 구조의 객체를 보다 간결하게 수정할 수 있도록 도와줍니다.
 
 ```js
 import { produce } from 'immer';
@@ -320,7 +320,7 @@ export default function NewNote() {
 
 ### 4-2. Save data in Local Storage
 
-![mood-local](https://github.com/cona-tus/react-mood-tracker/assets/90844424/62f29957-d04d-4de0-84bb-ae56f4766756)
+![local](https://github.com/cona-tus/react-mood-tracker/assets/90844424/a5e06843-be7e-4142-9da9-4f7c60a07d97)
 
 `useEffect` 훅을 사용해 notes가 변경될 때마다 로컬 스토리지에 데이터를 저장합니다.
 
@@ -333,7 +333,7 @@ useEffect(() => {
 
 <br/>
 
-useReducer의 초기값으로 `getNotes()` 함수를 호출하여 로컬 스토리지에서 notes 데이터를 가져옵니다.
+useReducer의 초깃값으로 `getNotes()` 함수를 호출하여 로컬 스토리지에서 notes 데이터를 가져옵니다.
 
 ```js
 // 초기 노트 상태
@@ -670,6 +670,8 @@ notes: [
 
 ### 6-2. Sort by date
 
+![sort](https://github.com/cona-tus/react-mood-tracker/assets/90844424/18d29442-8abd-4805-9c0c-affb870d8ff0)
+
 #### 1. 목표
 
 일기 목록과 그래프를 날짜순으로 정렬하고자 했습니다.
@@ -678,7 +680,7 @@ notes: [
 
 #### 2. 문제 상황
 
-일기를 작성한 순서대로 목록과 그래프가 렌더링되어 사용자가 감정의 흐름을 파악하는 데 어렵다는 문제가 있었습니다.
+일기를 작성한 순서대로 목록과 그래프가 렌더링 되어 사용자가 감정의 흐름을 파악하는 데 어렵다는 문제가 있었습니다.
 
 <br/>
 
@@ -695,4 +697,4 @@ const sortedList = [...journalList].sort((a, b) =>
 <br/>
 <br/>
 
-[맨위로 이동하기]()
+[맨위로 이동하기](#-무드-트래커-앱-moodlog-프로젝트)
